@@ -2,6 +2,7 @@ import { Hero, SearchBar, CustomFilter } from '@/components'
 import { fetchCars } from '@/utils'
 import { CarCard } from '@/components'
 import { HomeProps } from '@/types'
+import { fuels, yearsOfProduction } from '@/constants'
 
 export default async function Home({ searchParams }: HomeProps) {
 
@@ -15,8 +16,6 @@ export default async function Home({ searchParams }: HomeProps) {
   // isDataEmpty is true
   const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars
 
-  // console.log(allCars)
- 
   return (
     <main className="overflow-hidden">
       <Hero />
@@ -30,8 +29,8 @@ export default async function Home({ searchParams }: HomeProps) {
         <div className='home__filters'>
           <SearchBar />
           <div className='home__filter-container'>
-            <CustomFilter title="fule" />
-            <CustomFilter title="year" />
+            <CustomFilter title="fule" options={fuels} />
+            <CustomFilter title="year" options={yearsOfProduction} />
           </div>
         </div>
         {
